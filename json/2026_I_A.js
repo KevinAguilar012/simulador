@@ -1,0 +1,109 @@
+const exam2026_I_A = [
+    // ==========================================
+    // RAZONAMIENTO MATEMÁTICO (1 - 10)
+    // ==========================================
+    { "numero": 1, "curso": "Razonamiento Matemático", "enunciado": "Dadas las siguientes premisas:\n- Todas las enfermeras trabajan en un hospital.\n- Algunas enfermeras son geriatras.\nSe concluye que:", "opciones": { "a": "Algunas geriatras no trabajan en un hospital.", "b": "Todas las geriatras trabajan en un hospital.", "c": "Algunas geriatras trabajan en un hospital.", "d": "Todas las que trabajan en un hospital son enfermeras.", "e": "Todas las geriatras son enfermeras." }, "correcta": "c" },
+    { "numero": 2, "curso": "Razonamiento Matemático", "enunciado": "A una reunión asistieron 6 personas: Max, Óscar, Vladi, Sonia, Lucía y María. Óscar salió con la amiga de Lucía. Sonia salió antes que Max. ¿Quién acompañó a María y con quién salió Max?", "opciones": { "a": "Óscar - Lucía", "b": "Óscar - Sonia", "c": "Vladi - Lucía", "d": "Vladi - Sonia", "e": "Max - María" }, "correcta": "b" },
+    { "numero": 3, "curso": "Razonamiento Matemático", "enunciado": "La familia Hurtado tiene 5 hijos varones, cada hijo tiene una hermana y cada hermano tiene 2 sobrinas. ¿Cuál es el número mínimo de personas que conforman la familia?", "opciones": { "a": "18", "b": "16", "c": "14", "d": "10", "e": "20" }, "correcta": "d" },
+    { "numero": 4, "curso": "Razonamiento Matemático", "enunciado": "Si un cerdo pesa 50 kg más que 1/3 del peso de una oveja y la oveja pesa 15 kg más que 1/4 del peso del cerdo, ¿cuánto pesan los dos animales juntos?", "opciones": { "a": "100 kg", "b": "90 kg", "c": "60 kg", "d": "120 kg", "e": "97 kg" }, "correcta": "e" },
+    { "numero": 5, "curso": "Razonamiento Matemático", "enunciado": "Leslie: el doble de su dinero es menor que 32. Si gasta 2 en una lechuga, el triple de lo que le resta es mayor que 36. ¿Cuánto tenía inicialmente?", "opciones": { "a": "14", "b": "16", "c": "10", "d": "20", "e": "15" }, "correcta": "e" },
+    { "numero": 6, "curso": "Razonamiento Matemático", "enunciado": "Calcule el valor de M según la operación definida en la imagen:", "imagen": "images/2025_2_q6.png", "opciones": { "a": "1", "b": "2", "c": "4", "d": "3", "e": "5" }, "correcta": "b" },
+    { "numero": 7, "curso": "Razonamiento Matemático", "enunciado": "Marcelino compra caramelos: 1ra vez 1 (+1 regalo), 2da vez 3 (+2 regalo), 3ra vez 6 (+3 regalo)... ¿Cuántos tendrá tras la 20ava compra?", "opciones": { "a": "210", "b": "250", "c": "300", "d": "230", "e": "327" }, "correcta": "d" },
+    { "numero": 8, "curso": "Razonamiento Matemático", "enunciado": "Halle el valor de 'S' en la serie infinita de la imagen:", "imagen": "images/2025_2_q8.png", "opciones": { "a": "12/25", "b": "24/25", "c": "13/50", "d": "17/50", "e": "23/41" }, "correcta": "c" },
+    { "numero": 9, "curso": "Razonamiento Matemático", "enunciado": "Determine el número de formas de leer 'UNASAM' en el arreglo:", "imagen": "images/2025_2_q9.png", "opciones": { "a": "16", "b": "26", "c": "64", "d": "32", "e": "128" }, "correcta": "d" },
+    { "numero": 10, "curso": "Razonamiento Matemático", "enunciado": "¿Cuál figura representa la unión de las dos piezas mostradas?", "imagen": "images/2025_2_q10.png", "opciones": { "a": "Figura a", "b": "Figura b", "c": "Figura c", "d": "Figura d", "e": "Figura e" }, "correcta": "d" },
+
+    // ==========================================
+    // RAZONAMIENTO VERBAL (11 - 20)
+    // ==========================================
+    { "numero": 11, "curso": "Razonamiento Verbal", "texto_contexto": "Texto sobre el Cactus San Pedro y la práctica chamánica...", "enunciado": "¿Qué acción es menos adecuada para identificar el sentido de 'estado salvaje'?", "opciones": { "a": "Buscar en diccionario", "b": "Cuadro comparativo frondosidad", "c": "Relación con cultivo humano", "d": "Localizar todas las acepciones", "e": "Sustitución contextual" }, "correcta": "b" },
+    { "numero": 12, "curso": "Razonamiento Verbal", "enunciado": "¿Qué acción busca obtener información IMPLÍCITA del texto?", "opciones": { "a": "Relación con maleficios", "b": "Sustancia psicoactiva", "c": "Tipos de ceremonias", "d": "Partes de la planta", "e": "Creencia de regalo al nacer" }, "correcta": "e" },
+    { "numero": 13, "curso": "Razonamiento Verbal", "enunciado": "¿Qué estudiante interpreta el sentido GLOBAL del texto?", "opciones": { "a": "Bruno (Altura)", "b": "Carla (Hermano gemelo)", "c": "Ana (Puertas espirituales)", "d": "Daniel (Claridad literal)", "e": "Estela (Tierras áridas)" }, "correcta": "c" },
+    { "numero": 14, "curso": "Razonamiento Verbal", "enunciado": "¿Cuál estudiante reconoce la construcción del sentido general mediante recursos expresivos?", "opciones": { "a": "Elena", "b": "Felipe", "c": "Diego", "d": "Gabriela", "e": "Hugo" }, "correcta": "c" },
+    { "numero": 15, "curso": "Razonamiento Verbal", "enunciado": "¿Qué pregunta fomenta la reflexión sobre el contenido global?", "opciones": { "a": "Simbología al nacer", "b": "Adaptaciones biológicas", "c": "Finalidad de la mezcalina", "d": "Interpretación de la metáfora", "e": "Implicancias en otros países" }, "correcta": "d" },
+    { "numero": 16, "curso": "Razonamiento Verbal", "enunciado": "PLAN DE REDACCIÓN: Educación con perspectiva de género. I. Desafíos, II. Importancia, III. Principios, IV. Ejemplos, V. Rol docentes.", "opciones": { "a": "II-III-I-V-IV", "b": "III-V-II-I-IV", "c": "III-I-V-IV-II", "d": "III-II-V-I-IV", "e": "V-II-I-III-IV" }, "correcta": "d" },
+    { "numero": 17, "curso": "Razonamiento Verbal", "enunciado": "SUPRESIÓN: I. Estrés académico, II. Programas resiliencia, III. Resiliencia insuficiente, IV. Sobrecarga trabajos, V. Talleres prevención.", "opciones": { "a": "II", "b": "V", "c": "IV", "d": "I", "e": "III" }, "correcta": "e" },
+    { "numero": 18, "curso": "Razonamiento Verbal", "enunciado": "CONECTORES: La universidad incrementó becas, ___ redujo presupuesto ___ afrontar la crisis.", "opciones": { "a": "aunque - por", "b": "pero - con el fin de", "c": "sin embargo - debido a", "d": "y - a causa de", "e": "no obstante - con que" }, "correcta": "b" },
+    { "numero": 19, "curso": "Razonamiento Verbal", "enunciado": "SINONIMIA: 'La EFÍMERA naturaleza de la fama dificulta su APREHENSIÓN'.", "opciones": { "a": "breve-captura", "b": "temporal-asimilación", "c": "pasajera-retención", "d": "fugaz-entendimiento", "e": "instantánea-comprensión" }, "correcta": "c" },
+    { "numero": 20, "curso": "Razonamiento Verbal", "enunciado": "PRECISIÓN LÉXICA: La investigadora busca VERIFICAR si la lectura digital FAVORECE la comprensión.", "opciones": { "a": "constatar-acicatea", "b": "confirmar-azuza", "c": "comprobar-estimula", "d": "evaluar-alimenta", "e": "ratificar-nutre" }, "correcta": "c" },
+
+    // ==========================================
+    // MATEMÁTICA (21 - 50)
+    // ==========================================
+    { "numero": 21, "curso": "Matemática", "enunciado": "Si activas el GPS entonces podrás usar el mapa. ¿Qué mensaje hace FALSA la proposición?", "opciones": { "a": "Activaste y usaste", "b": "No activaste y no usaste", "c": "Activaste y NO pudiste usar", "d": "No activaste pero usaste", "e": "Activaste y usaste otra app" }, "correcta": "c" },
+    { "numero": 22, "curso": "Matemática", "enunciado": "Encuesta a 550 estudiantes: 300 Facebook, 250 Instagram, 200 TikTok. 100 FB e IG, 80 FB y TK, 70 IG y TK. 50 las tres. ¿Cuántos usan al menos dos?", "opciones": { "a": "100", "b": "150", "c": "140", "d": "160", "e": "550" }, "correcta": "b" },
+    { "numero": 23, "curso": "Matemática", "enunciado": "Dirección hexadecimal 2F. Su equivalente binario es:", "opciones": { "a": "101111", "b": "101011", "c": "101101", "d": "101110", "e": "101001" }, "correcta": "a" },
+    { "numero": 24, "curso": "Matemática", "enunciado": "Máquina A (48s), Máquina B (72s). Inician 07:00. ¿A qué hora coinciden por TERCERA vez?", "opciones": { "a": "7:04:48", "b": "7:02:24", "c": "7:07:12", "d": "7:06:12", "e": "7:08:36" }, "correcta": "c" },
+    { "numero": 25, "curso": "Matemática", "enunciado": "Edades de hermanos son primos que suman 28. Producto + 3 tiene 8 divisores. Edad del mayor:", "opciones": { "a": "23", "b": "13", "c": "11", "d": "19", "e": "17" }, "correcta": "a" },
+    { "numero": 26, "curso": "Matemática", "enunciado": "Tubería A llena 3/5 en 4h. Tubería B llena 2/3 en 5h. ¿En cuánto tiempo llenan ambas?", "opciones": { "a": "60/17", "b": "60/37", "c": "65/38", "d": "60/34", "e": "80/43" }, "correcta": "b" },
+    { "numero": 27, "curso": "Matemática", "enunciado": "Gasto por polo: (x-10). Gasto fijo 400. Venta 40. ¿Mínimo de polos para ganancia?", "opciones": { "a": "10", "b": "11", "c": "12", "d": "9", "e": "13" }, "correcta": "b" },
+    { "numero": 28, "curso": "Matemática", "enunciado": "f(t) = -2t² + 24t + 48. ¿En qué día hubo el máximo de liebres contagiadas?", "opciones": { "a": "15", "b": "8", "c": "9", "d": "12", "e": "6" }, "correcta": "e" },
+    { "numero": 29, "curso": "Matemática", "enunciado": "Trayectoria f(x) = 4 - |x-3|. Halle distancia recorrida de A(0;f(0)) a B(7;f(7)).", "opciones": { "a": "7*sqrt(2)", "b": "11*sqrt(2)", "c": "5*sqrt(2)", "d": "9*sqrt(2)", "e": "12*sqrt(2)" }, "correcta": "a" },
+    { "numero": 30, "curso": "Matemática", "enunciado": "Bacteria C(t) = A * e^(-Bt). Tiempo para reducción del 50%:", "opciones": { "a": "ln2 / B", "b": "-B / ln2", "c": "B * ln2", "d": "(B/ln2)^2", "e": "2B * ln2" }, "correcta": "a" },
+    { "numero": 31, "curso": "Matemática", "enunciado": "Verdes + Blancos = 5 * Marrones. Verdes = 3 * Marrones. Blancos + Marrones = 123. Halle Verdes y Marrones.", "opciones": { "a": "123 y 82", "b": "41 y 82", "c": "123 y 41", "d": "82 y 164", "e": "164 y 41" }, "correcta": "c" },
+    { "numero": 32, "curso": "Matemática", "enunciado": "Halle el valor de M en la expresión algebraica de la imagen:", "imagen": "images/2025_2_q32.png", "opciones": { "a": "21", "b": "18", "c": "27", "d": "16", "e": "20" }, "correcta": "b" },
+    { "numero": 33, "curso": "Matemática", "enunciado": "Si a+b+c = abc. Simplifique la expresión E de la imagen:", "imagen": "images/2025_2_q33.png", "opciones": { "a": "x", "b": "x^abc", "c": "1", "d": "x^-1", "e": "x^2" }, "correcta": "c" },
+    { "numero": 34, "curso": "Matemática", "enunciado": "Triángulo isósceles, perímetro 16. Halle área máxima (lados enteros).", "opciones": { "a": "16", "b": "sqrt(48)", "c": "8*sqrt(2)", "d": "9", "e": "12" }, "correcta": "e" },
+    { "numero": 35, "curso": "Matemática", "enunciado": "BC es diámetro, AB=BC, AM=MC. Halle x:", "imagen": "images/2025_2_q35.png", "opciones": { "a": "30°", "b": "24°", "c": "45°", "d": "36°", "e": "53/2°" }, "correcta": "d" },
+    { "numero": 36, "curso": "Matemática", "enunciado": "ABCD recto en B. M,N,P,Q puntos medios. Perímetro máximo (lados enteros):", "opciones": { "a": "26", "b": "24", "c": "20", "d": "28", "e": "18" }, "correcta": "a" },
+    { "numero": 37, "curso": "Matemática", "enunciado": "Campo paralelogramo. Distancia C a la avenida (B=4m, D=6m):", "imagen": "images/2025_2_q37.png", "opciones": { "a": "8", "b": "12", "c": "15", "d": "10", "e": "7" }, "correcta": "d" },
+    { "numero": 38, "curso": "Matemática", "enunciado": "Marco ventana triangular con vidrio cuadrado. Precio si 1m2 = 4 soles:", "imagen": "images/2025_2_q38.png", "opciones": { "a": "28", "b": "32", "c": "16", "d": "36", "e": "42" }, "correcta": "b" },
+    { "numero": 39, "curso": "Matemática", "enunciado": "Árbol 6m. Sombra de copa área 36*sqrt(3). Halle distancia P a Q:", "imagen": "images/2025_2_q39.png", "opciones": { "a": "10", "b": "2*sqrt(7)", "c": "4*sqrt(7)", "d": "12", "e": "9" }, "correcta": "c" },
+    { "numero": 40, "curso": "Matemática", "enunciado": "Mapa escala 1:10,000. Distancia Nevados A y B (usar sqrt(2)=1.4):", "imagen": "images/2025_2_q40.png", "opciones": { "a": "2,2km", "b": "4,1km", "c": "3,4km", "d": "3,3km", "e": "4,8km" }, "correcta": "c" },
+    { "numero": 41, "curso": "Matemática", "enunciado": "Costo cables (Tierra S/12, Acuático S/30). Costo total B a P:", "imagen": "images/2025_2_q41.png", "opciones": { "a": "30,000", "b": "20,800", "c": "56,000", "d": "14,000", "e": "28,000" }, "correcta": "e" },
+    { "numero": 42, "curso": "Matemática", "enunciado": "A(0,0), B(3,0). AD perpendicular a y=-2x. D en circunferencia r=sqrt(5). Suma coords C:", "opciones": { "a": "8", "b": "5", "c": "6", "d": "4", "e": "3" }, "correcta": "b" },
+    { "numero": 43, "curso": "Matemática", "enunciado": "sen^3x cosx - senx cos^3x = 1/m. Halle condición para raíz real:", "opciones": { "a": "|m|<4", "b": "m in R-{0}", "c": "m > 1", "d": "m < -2", "e": "m in (-2,2)" }, "correcta": "a" },
+    { "numero": 44, "curso": "Matemática", "enunciado": "Temp T(h) = A + B sen(pi/12(h-12)). Max 26, min 18. Halle A+B.", "opciones": { "a": "25", "b": "26", "c": "17", "d": "24", "e": "18" }, "correcta": "b" },
+    { "numero": 45, "curso": "Matemática", "enunciado": "Sección cónica de la ecuación con determinante de la imagen:", "imagen": "images/2025_2_q45.png", "opciones": { "a": "Parábola", "b": "Hipérbola", "c": "Circunferencia", "d": "Elipse", "e": "Punto" }, "correcta": "c" },
+    { "numero": 46, "curso": "Matemática", "enunciado": "Halle salario mediano del cuadro de frecuencias de la imagen:", "imagen": "images/2025_2_q46.png", "opciones": { "a": "51,5", "b": "51,3", "c": "51,0", "d": "52,0", "e": "51,6" }, "correcta": "b" },
+    { "numero": 47, "curso": "Matemática", "enunciado": "Halle peso promedio de paquetes (n=120, intervalos igual amplitud):", "opciones": { "a": "15,6", "b": "15,7", "c": "15,8", "d": "15,5", "e": "15,2" }, "correcta": "b" },
+    { "numero": 48, "curso": "Matemática", "enunciado": "Promedio 24, mediana 23, moda 22 (4 amigos). Halle edad del mayor.", "opciones": { "a": "30", "b": "26", "c": "28", "d": "24", "e": "25" }, "correcta": "c" },
+    { "numero": 49, "curso": "Matemática", "enunciado": "4 pelotas en 3 cajas. Probabilidad de ninguna caja vacía:", "opciones": { "a": "4/5", "b": "2/5", "c": "3/5", "d": "1/5", "e": "1/2" }, "correcta": "b" },
+    { "numero": 50, "curso": "Matemática", "enunciado": "Probabilidad de exactamente una cara al lanzar 3 monedas (sale al menos 1 sello):", "opciones": { "a": "2/7", "b": "4/7", "c": "5/7", "d": "3/7", "e": "3/8" }, "correcta": "d" },
+
+    // ==========================================
+    // FÍSICA (51 - 60)
+    // ==========================================
+    { "numero": 51, "curso": "Física", "enunciado": "A=2i-3j+4k. Halle módulo A+B en el cubo:", "imagen": "images/2025_2_q51.png", "opciones": { "a": "sqrt(21)", "b": "sqrt(41)", "c": "2*sqrt(3)", "d": "2*sqrt(5)", "e": "3*sqrt(2)" }, "correcta": "a" },
+    { "numero": 52, "curso": "Física", "enunciado": "Halle módulo de la fuerza resultante:", "imagen": "images/2025_2_q52.png", "opciones": { "a": "25", "b": "28", "c": "20", "d": "30", "e": "24" }, "correcta": "e" },
+    { "numero": 53, "curso": "Física", "enunciado": "Ciclistas (90km/h y 15m/s) en 200m. ¿Distancia del poste?", "imagen": "images/2025_2_q53.png", "opciones": { "a": "5m der", "b": "5m izq", "c": "10m der", "d": "10m izq", "e": "3m der" }, "correcta": "b" },
+    { "numero": 54, "curso": "Física", "enunciado": "Alcance proyectil altura h=100m. Halle alcance para 2h:", "opciones": { "a": "100*sqrt(3)", "b": "200", "c": "200*sqrt(2)", "d": "100*sqrt(2)", "e": "200*sqrt(3)" }, "correcta": "d" },
+    { "numero": 55, "curso": "Física", "enunciado": "Fuerza 20N, bloque 10kg, rozamiento 0,1. Halle aceleración:", "imagen": "images/2025_2_q55.png", "opciones": { "a": "0,64", "b": "0,72", "c": "0,18", "d": "0,36", "e": "0,86" }, "correcta": "a" },
+    { "numero": 56, "curso": "Física", "enunciado": "Piedra 3kg, cuerda 2m, v=5m/s. Halle Tensión en B:", "imagen": "images/2025_2_q56.png", "opciones": { "a": "57,5", "b": "70,5", "c": "65,4", "d": "68,5", "e": "67,5" }, "correcta": "d" },
+    { "numero": 57, "curso": "Física", "enunciado": "Cuerpo 2kg, carga q0=8uC. Halle Tensión T equilibrio:", "imagen": "images/2025_2_q57.png", "opciones": { "a": "32,4", "b": "30,2", "c": "24,2", "d": "26,4", "e": "20,4" }, "correcta": "d" },
+    { "numero": 58, "curso": "Física", "enunciado": "Cuerpo 150N, densidad 2000kg/m3 en agua. Halle T:", "imagen": "images/2025_2_q58.png", "opciones": { "a": "80", "b": "65", "c": "75", "d": "70", "e": "85" }, "correcta": "c" },
+    { "numero": 59, "curso": "Física", "enunciado": "Esfera 0,5kg cae de 90m. Halle E. mecánica a los 4s:", "opciones": { "a": "750", "b": "800", "c": "450", "d": "600", "e": "550" }, "correcta": "c" },
+    { "numero": 60, "curso": "Física", "enunciado": "Voltaje en R=10 es 20V. Halle voltaje total V:", "imagen": "images/2025_2_q60.png", "opciones": { "a": "60", "b": "32", "c": "76", "d": "78", "e": "64" }, "correcta": "e" },
+
+    // ==========================================
+    // QUÍMICA (61 - 70)
+    // ==========================================
+    { "numero": 61, "curso": "Química", "enunciado": "Identifique cambios químicos (azúcar quemada, hielo, gasolina evap, oxidación clavo):", "opciones": { "a": "I y IV", "b": "II y IV", "c": "II y III", "d": "I y II", "e": "III y IV" }, "correcta": "a" },
+    { "numero": 62, "curso": "Química", "enunciado": "Z=17, A=35. Halle p+, n, e-:", "opciones": { "a": "17, 35", "b": "17, 18e", "c": "18e, 35", "d": "17, 18n", "e": "52, 18" }, "correcta": "d" },
+    { "numero": 63, "curso": "Química", "enunciado": "Elemento 32X. ¿Grupo IVA, periodo 4, metal transición?", "opciones": { "a": "VVF", "b": "VFV", "c": "FVF", "d": "FVV", "e": "VFF" }, "correcta": "a" },
+    { "numero": 64, "curso": "Química", "enunciado": "¿Qué compuesto NO cumple regla del octeto?", "opciones": { "a": "CH4", "b": "H2O", "c": "PCl5", "d": "NH3", "e": "H2S" }, "correcta": "c" },
+    { "numero": 65, "curso": "Química", "enunciado": "Fórmula óxido cúprico y ácido sulfhídrico:", "opciones": { "a": "CuO, H2S", "b": "Cu2O, H2SO4", "c": "CuO, HS2", "d": "CuO2, HS", "e": "Cu2OH, H2S" }, "correcta": "a" },
+    { "numero": 66, "curso": "Química", "enunciado": "Moles en 480g de MgSO4 (Mg=24, S=32, O=16):", "opciones": { "a": "1,33", "b": "2,5", "c": "0,25", "d": "4,0", "e": "3,25" }, "correcta": "d" },
+    { "numero": 67, "curso": "Química", "enunciado": "Balance KClO3 -> KCl + O2. Coeficientes oxidante/reductor:", "opciones": { "a": "2 y 2", "b": "2 y 3", "c": "3 y 2", "d": "1 y 1", "e": "2 y 1" }, "correcta": "a" },
+    { "numero": 68, "curso": "Química", "enunciado": "Globo 0,6L, 1 atm -> 0,4 atm. Halle Volumen final:", "opciones": { "a": "3.0", "b": "0.4", "c": "1.5", "d": "0.9", "e": "2.4" }, "correcta": "c" },
+    { "numero": 69, "curso": "Química", "enunciado": "Masa de NaOH para 5L de 0,1M (NaOH=40):", "opciones": { "a": "80", "b": "40", "c": "15", "d": "10", "e": "20" }, "correcta": "e" },
+    { "numero": 70, "curso": "Química", "enunciado": "Características orgánicos: moléculas unidas por enlaces covalentes.", "opciones": { "a": "Sí", "b": "No", "c": "Solo iónico", "d": "Solo C,H,O", "e": "Solubles" }, "correcta": "a" },
+
+    // ==========================================
+    // CIENCIAS SOCIALES (71 - 75)
+    // ==========================================
+    { "numero": 71, "curso": "Ciencias Sociales", "enunciado": "Degradación medio geográfico. Área y enfoque adecuado:", "opciones": { "a": "Humana-Func", "b": "Econ-Prob", "c": "Física-Etn", "d": "Amb-Sist", "e": "Cult-Estr" }, "correcta": "d" },
+    { "numero": 72, "curso": "Ciencias Sociales", "enunciado": "Herramienta digital para complejos habitacionales saturados:", "opciones": { "a": "Juan", "b": "Diana", "c": "Elisa", "d": "Percy", "e": "Daniel" }, "correcta": "c" },
+    { "numero": 73, "curso": "Ciencias Sociales", "enunciado": "Equilibrio Mercado X. Si aumentan ingresos, ¿qué NO sucede?", "opciones": { "a": "Desplaz D", "b": "Nuevo equilibrio", "c": "Aumenta P", "d": "Aumenta Q", "e": "Desplaz izq Oferta" }, "correcta": "e" },
+    { "numero": 74, "curso": "Ciencias Sociales", "enunciado": "Bancos cobran sin informar. ¿A dónde ir primero?", "opciones": { "a": "INDECOPI", "b": "SBS", "c": "Mismo banco", "d": "SUNAT", "e": "Contraloría" }, "correcta": "c" },
+    { "numero": 75, "curso": "Ciencias Sociales", "enunciado": "Bonos pandemia para estimular consumo. Política:", "opciones": { "a": "Tributaria", "b": "Fiscal contr", "c": "Monetaria exp", "d": "Monetaria rest", "e": "Fiscal exp" }, "correcta": "e" },
+
+    // ==========================================
+    // COMUNICACIÓN (76 - 80)
+    // ==========================================
+    { "numero": 76, "curso": "Comunicación", "enunciado": "Texto celulares. ¿Qué oración interrumpe la progresión?", "opciones": { "a": "5", "b": "3", "c": "2", "d": "4", "e": "1" }, "correcta": "d" },
+    { "numero": 77, "curso": "Comunicación", "enunciado": "Término formal para reemplazar 'estudiantes':", "opciones": { "a": "mozuelos", "b": "chibolos", "c": "jóvenes", "d": "chicos", "e": "mocosos" }, "correcta": "c" },
+    { "numero": 78, "curso": "Comunicación", "enunciado": "¿Mejor propuesta para evitar repetición de 'celular'?", "opciones": { "a": "Conectores", "b": "Sinónimos/Pronombres", "c": "Repetir idea", "d": "Cifras técnicas", "e": "Adjetivos" }, "correcta": "b" },
+    { "numero": 79, "curso": "Comunicación", "enunciado": "Alternativa con verbo mal conjugado:", "opciones": { "a": "El cantar", "b": "Ojalá", "c": "Nadie sabe", "d": "andé", "e": "Había" }, "correcta": "d" },
+    { "numero": 80, "curso": "Comunicación", "enunciado": "Palabra que requiere MAYÚSCULA inicial:", "opciones": { "a": "humanismo", "b": "física", "c": "cordillera", "d": "alcalde", "e": "vía láctea" }, "correcta": "e" }
+];

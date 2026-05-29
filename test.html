@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestSuite - SimuladorEngine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #001f4d, #003366, #00509e);
+            color: #f8fafc;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        p.subtitle {
+            text-align: center;
+            color: #dce8ff;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+        .summary-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .stat h3 {
+            font-size: 36px;
+            color: #00d2ff;
+            font-weight: 700;
+        }
+        .stat.success h3 {
+            color: #96ff96;
+        }
+        .stat.fail h3 {
+            color: #ff9696;
+        }
+        .stat p {
+            font-size: 12px;
+            color: #dce8ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        .test-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .test-item-wrapper {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        .test-item {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .test-item:hover {
+            transform: translateX(4px);
+        }
+        .test-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .test-title {
+            font-weight: bold;
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .test-desc {
+            font-size: 13px;
+            color: #dce8ff;
+            opacity: 0.8;
+        }
+        .badge {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .badge.pass {
+            background: rgba(150, 255, 150, 0.2);
+            color: #96ff96;
+            border: 1px solid rgba(150, 255, 150, 0.3);
+        }
+        .badge.fail {
+            background: rgba(255, 150, 150, 0.2);
+            color: #ff9696;
+            border: 1px solid rgba(255, 150, 150, 0.3);
+        }
+        .error-message {
+            background: rgba(255, 50, 50, 0.1);
+            border-top: 1px solid rgba(255, 50, 50, 0.2);
+            padding: 12px 20px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #ffc8c8;
+            white-space: pre-wrap;
+        }
+        .btn-action {
+            display: block;
+            margin: 30px auto 0 auto;
+            padding: 12px 25px;
+            background: #00d2ff;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        }
+        .btn-action:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pruebas de Calidad (TDD)</h1>
+        <p class="subtitle">Validador Automático de Reglas de Negocio del Simulador</p>
+
+        <div class="summary-card">
+            <div class="stat" id="stat-total">
+                <h3>0</h3>
+                <p>Pruebas</p>
+            </div>
+            <div class="stat success" id="stat-passed">
+                <h3>0</h3>
+                <p>Pasaron</p>
+            </div>
+            <div class="stat fail" id="stat-failed">
+                <h3>0</h3>
+                <p>Fallaron</p>
+            </div>
+        </div>
+
+        <div class="test-list" id="test-list-container">
+            <!-- Los resultados de los tests se inyectarán aquí -->
+        </div>
+
+        <a href="index.html" class="btn-action">← Volver al Simulador</a>
+    </div>
+
+    <!-- Cargar el motor lógico -->
+    <script src="SimuladorEngine.js"></script>
+
+    <script>
+        // Set de preguntas mock para los tests
+        const preguntasMock = [
+            { numero: 1, curso: "Matemática", enunciado: "P1", opciones: { a: "A1", b: "B1", c: "C1" }, correcta: "a" },
+            { numero: 2, curso: "Verbal", enunciado: "P2", opciones: { a: "A2", b: "B2", c: "C2" }, correcta: "b" },
+            { numero: 3, curso: "Física", enunciado: "P3", opciones: { a: "A3", b: "B3", c: "C3" }, correcta: "c" }
+        ];
+
+        const tests = [];
+        function test(nombre, descripcion, fn) {
+            tests.push({ nombre, descripcion, fn });
+        }
+
+        // --- DEFINICIÓN DE PRUEBAS UNITARIAS (TDD) ---
+
+        test(
+            "Inicialización del Motor",
+            "El motor debería iniciar en la pregunta 1 con puntaje 0 y progreso correcto.",
+            () => {
+                const engine = new SimuladorEngine(preguntasMock);
+                const pregunta = engine.obtenerPreguntaActual();
+                const progreso = engine.obtenerProgreso();
+                const puntaje = engine.obtenerPuntaje();
+
+                if (pregunta.numero !== 1) throw new Error(`Se esperaba la pregunta 1, se obtuvo la ${pregunta.numero}`);
+                if (progreso.actual !== 1) throw new Error(`Se esperaba progreso actual 1, se obtuvo ${progreso.actual}`);
+                if (progreso.total !== 3) throw new Error(`Se esperaba progreso total 3, se obtuvo ${progreso.total}`);
+                if (puntaje !== 0) throw new Error(`Se esperaba puntaje inicial 0, se obtuvo ${puntaje}`);
+            }
+        );
+
+        test(
+            "Respuesta Correcta (+4.00 pts)",
+            "Debería sumar exactamente +4.00 puntos por una respuesta correcta según la regla UNASAM.",
+            () => {
+                const engine = new SimuladorEngine(preguntasMock);
+                engine.responderPregunta("a"); // P1 es correcta con 'a'
+                const puntaje = engine.obtenerPuntaje();
+                if (puntaje !== 4.0) throw new Error(`Se esperaban 4.0 puntos, se obtuvieron ${puntaje}`);
+            }
+        );
+
+        test(
+            "Respuesta Incorrecta (-0.50 pts)",
+            "Debería restar exactamente -0.50 puntos por una respuesta incorrecta según la regla UNASAM.",
+            () => {
+                const engine = new SimuladorEngine(preguntasMock);
+                engine.responderPregunta("b"); // P1 correcta es 'a'
+                const puntaje = engine.obtenerPuntaje();
+                if (puntaje !== -0.5) throw new Error(`Se esperaban -0.5 puntos, se obtuvieron ${puntaje}`);
+            }
+        );
+
+        test(
+            "Pregunta Omitida / En Blanco (0.00 pts)",
+            "Debería mantener un puntaje neutral (0 puntos) si la pregunta es omitida.",
+            () => {
+                const engine = new SimuladorEngine(preguntasMock);
+                engine.omitirPregunta(); // Sin responder
+                const puntaje = engine.obtenerPuntaje();
+                if (puntaje !== 0.0) throw new Error(`Se esperaban 0.0 puntos por omitir, se obtuvieron ${puntaje}`);
+            }
+        );
+
+        test(
+            "Cálculo Mixto de Examen Completo",
+            "Verifica la combinación de correctas, incorrectas y omitidas (1 correcta [+4], 1 incorrecta [-0.5], 1 omitida [0] = 3.5).",
+            () => {
+                const engine = new SimuladorEngine(preguntasMock);
+                
+                engine.responderPregunta("a"); // P1: Correcta (+4.0)
+                engine.siguientePregunta();
+                
+                engine.responderPregunta("a"); // P2: Incorrecta, era 'b' (-0.5)
+                engine.siguientePregunta();
+                
+                engine.omitirPregunta();       // P3: Omitida (0)
+                
+                const resumen = engine.obtenerResumenResultados();
+                if (resumen.correctas !== 1) throw new Error(`Se esperaba 1 correcta, se obtuvieron ${resumen.correctas}`);
+                if (resumen.incorrectas !== 1) throw new Error(`Se esperaba 1 incorrecta, se obtuvieron ${resumen.incorrectas}`);
+                if (resumen.omitidas !== 1) throw new Error(`Se esperaba 1 omitida, se obtuvieron ${resumen.omitidas}`);
+                if (resumen.puntaje !== 3.5) throw new Error(`Se esperaba puntaje total de 3.5, se obtuvo ${resumen.puntaje}`);
+            }
+        );
+
+        test(
+            "Control Seguro de Navegación",
+            "El motor debe bloquear movimientos fuera de los límites del vector de preguntas.",
+            () => {
+                const engine = new SimuladorEngine(preguntasMock);
+                
+                const pudoRetrocederInicio = engine.anteriorPregunta();
+                if (pudoRetrocederInicio !== false) throw new Error("No debería permitir retroceder al inicio.");
+
+                engine.siguientePregunta(); // Pregunta 2
+                engine.siguientePregunta(); // Pregunta 3 (Última)
+                
+                const pudoAvanzarFin = engine.siguientePregunta();
+                if (pudoAvanzarFin !== false) throw new Error("No debería permitir avanzar más allá de la última.");
+            }
+        );
+
+        // --- EJECUTOR DE TESTS EN PANTALLA ---
+
+        window.addEventListener('load', () => {
+            const container = document.getElementById('test-list-container');
+            let passedCount = 0;
+            let failedCount = 0;
+
+            tests.forEach(t => {
+                const item = document.createElement('div');
+                item.className = 'test-item-wrapper';
+                
+                let statusBadge = '';
+                let errorHtml = '';
+                let success = true;
+
+                try {
+                    t.fn();
+                    passedCount++;
+                    statusBadge = '<span class="badge pass">PASÓ</span>';
+                } catch (err) {
+                    failedCount++;
+                    success = false;
+                    statusBadge = '<span class="badge fail">FALLÓ</span>';
+                    errorHtml = `<div class="error-message">Error: ${err.message}\n${err.stack.split('\n')[1] || ''}</div>`;
+                }
+
+                item.innerHTML = `
+                    <div class="test-item" style="border-left: 4px solid ${success ? '#96ff96' : '#ff9696'}">
+                        <div class="test-info">
+                            <span class="test-title">${t.nombre}</span>
+                            <span class="test-desc">${t.descripcion}</span>
+                        </div>
+                        ${statusBadge}
+                    </div>
+                    ${errorHtml}
+                `;
+                container.appendChild(item);
+            });
+
+            // Actualizar estadísticas en UI
+            document.getElementById('stat-total').querySelector('h3').innerText = tests.length;
+            document.getElementById('stat-passed').querySelector('h3').innerText = passedCount;
+            document.getElementById('stat-failed').querySelector('h3').innerText = failedCount;
+        });
+    </script>
+</body>
+</html>

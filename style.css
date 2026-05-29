@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #001f4d,
+        #003366,
+        #00509e
+    );
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden; /* Evita que la ventana completa genere barras de desplazamiento */
+    padding: 10px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 700px; /* Ancho máximo en monitores grandes */
+    height: 94vh;     /* Forzamos a que el contenedor use máximo el 94% del alto de la pantalla */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px 30px; /* Reducido ligeramente para ahorrar espacio vertical */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    
+    /* FLEXBOX INTERNO: Distribuye los bloques verticalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 10px; /* Reducido para compactar */
+    flex-shrink: 0;      /* Impide que el título se aplaste */
+}
+
+/* ==================================================
+   NUEVO: ESTILOS PARA LA ETIQUETA DINÁMICA DE MATERIA
+   ================================================== */
+.etiqueta-materia {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 12px;
+    align-self: center;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+/* Color azul cian brillante para Matemáticas */
+.mate {
+    background: linear-gradient(90deg, #00d2ff, #0066ff);
+    color: white;
+}
+
+/* Color morado/magenta llamativo para Verbal */
+.verbal {
+    background: linear-gradient(90deg, #ff007f, #7928ca);
+    color: white;
+}
+/* ================================================== */
+
+.encabezado h1 {
+    font-size: clamp(24px, 4vh, 34px); /* Se adapta dinámicamente según el tamaño de la pantalla */
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.encabezado p {
+    color: #dce8ff;
+    font-size: clamp(14px, 2vh, 16px);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.puntaje,
+.contador {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* CAJA DE PREGUNTA INTELIGENTE */
+.caja-pregunta {
+    background: white;
+    color: #222;
+    padding: 20px 25px;
+    border-radius: 15px;
+    flex-grow: 1;        /* Absorbe todo el espacio intermedio que sobra en la pantalla */
+    min-height: 0;       /* IMPORTANTE: Permite que flexbox controle el tamaño real */
+    
+    /* Hacemos que la caja sea scrollable internamente SOLO si hay lecturas muy largas (ej: RV) */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;    
+}
+
+#pregunta {
+    font-size: clamp(16px, 2.5vh, 20px); /* Tamaño adaptativo de la letra de la pregunta */
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* ESTILO PARA LAS IMÁGENES DENTRO DE LA CAJA BLANCA */
+.imagen-pregunta {
+    display: block;
+    max-width: 100%;
+    max-height: 22vh;    /* La imagen nunca ocupará más del 22% del alto total de la pantalla */
+    object-fit: contain; /* Mantiene la proporción sin estirarse */
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
+}
+
+#opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;           /* Espaciado óptimo entre opciones */
+    margin-top: auto;    /* Empuja las opciones al fondo de la caja blanca si sobra espacio */
+}
+
+.opcion {
+    padding: 12px 15px;  /* Reducido para que entren cómodamente las 4 opciones */
+    border: none;
+    border-radius: 12px;
+    background: #f0f4ff;
+    color: #002b5c;
+    font-size: clamp(14px, 2vh, 16px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: left;    /* Alineación ideal para enunciados de respuestas */
+}
+
+.opcion:hover {
+    background: #00509e;
+    color: white;
+    transform: scale(1.015);
+}
+
+.correcta {
+    background:#28a745 !important;
+    color:white !important;
+}
+
+.incorrecta {
+    background:#dc3545 !important;
+    color:white !important;
+}
+
+.contenedor-botones {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-shrink: 0;
+}
+
+#btnAnterior {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#btnAnterior:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+#btnAnterior:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#btnSiguiente {
+    flex: 1;
+    padding: 14px;       /* Compactado verticalmente */
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(
+        90deg,
+        #00b09b,
+        #96c93d
+    );
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-shrink: 0;      /* Evita que el botón se reduzca */
+}
+
+#btnSiguiente:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Personalización elegante del scroll interno de la caja blanca (Opcional) */
+.caja-pregunta::-webkit-scrollbar {
+    width: 6px;
+}
+.caja-pregunta::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+/* Estilos para el Menú de Inicio */
+#pantalla-inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.menu-seleccion {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.btn-menu {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-menu:hover {
+    background: #00d2ff;
+    transform: scale(1.02);
+}
+
+/* Estilos para el botón Salir */
+.btn-salir {
+    background: rgba(255, 50, 50, 0.15);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    color: #ff9e9e;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.btn-salir:hover {
+    background: rgba(255, 50, 50, 0.35);
+    color: white;
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(255, 50, 50, 0.2);
+}
+
+/* ==================================================
+   NUEVO: ESTILOS PARA BOTÓN OMIRIR Y RESULTADOS
+   ================================================== */
+#btnOmitir {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 165, 0, 0.15); /* Glassmorphism naranja/oro */
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    color: #ffb84d;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+#btnOmitir:hover {
+    background: rgba(255, 165, 0, 0.3);
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.25);
+}
+
+#btnOmitir:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.tarjeta-resultados {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 35px 30px;
+    border-radius: 20px;
+    margin: 20px 0;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#resultadoPuntaje {
+    font-size: clamp(50px, 10vh, 80px);
+    color: #96ff96;
+    margin: 15px 0;
+    text-shadow: 0 0 25px rgba(150, 255, 150, 0.4);
+    font-weight: bold;
+}

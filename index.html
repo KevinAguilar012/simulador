@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador UNASAM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        
+        <!-- ==========================================
+            PANTALLA DE INICIO: SELECCIÓN DE EXAMEN
+            ========================================== -->
+        <div id="pantalla-inicio">
+            <div class="encabezado">
+                <h1>SIMULADOR UNASAM</h1>
+                <p>Banco de Exámenes Pasados</p>
+            </div>
+            
+            <!-- Contenedor con scroll por si agregas muchos años -->
+            <div class="menu-seleccion" style="overflow-y: auto; max-height: 60vh;">
+                <p style="margin-bottom: 20px; color: #dce8ff;">Selecciona un examen para empezar:</p>
+                
+                <!-- IMPORTANTE: El nombre en iniciarConExamen debe coincidir con el if del script.js -->
+                <button class="btn-menu" onclick="iniciarConExamen('2026_I_A')">Examen Ordinario 2026-I</button>
+                <button class="btn-menu" onclick="iniciarConExamen('2025_II_A')">Examen Ordinario 2025-II</button>
+                
+                <p style="margin-top: 30px; font-size: 12px; opacity: 0.7;">Próximamente más años...</p>
+            </div>
+        </div>
+
+        <!-- ==========================================
+            PANTALLA DEL JUEGO: SIMULADOR (Oculta al inicio)
+            ========================================== -->
+        <div id="pantalla-juego" style="display: none; flex-direction: column; height: 100%;">
+            <div class="encabezado">
+                <div id="materiaActual" class="etiqueta-materia">Cargando materia...</div>
+                <h1>SIMULADOR UNASAM</h1>
+                <p id="subtituloExamen">Examen de Admisión</p>
+            </div>
+
+            <div class="info">
+                <div class="puntaje">
+                    Puntaje: <span id="puntaje">0</span>
+                </div>
+                <button class="btn-salir" onclick="salirSimulacion()">
+                    ✕ Salir
+                </button>
+                <div class="contador">
+                    Pregunta: <span id="numeroPregunta">1</span>
+                </div>
+            </div>
+
+            <div class="caja-pregunta">
+                <div id="pregunta">Cargando pregunta...</div>
+                <div id="contenedorImagen"></div>
+                <div id="opciones"></div>
+            </div>
+
+            <div class="contenedor-botones">
+                <button id="btnAnterior" onclick="anteriorPregunta()">
+                    Anterior
+                </button>
+                <button id="btnOmitir" onclick="omitirPregunta()">
+                    Omitir
+                </button>
+                <button id="btnSiguiente" onclick="siguientePregunta()">
+                    Siguiente Pregunta
+                </button>
+            </div>
+        </div>
+
+        <!-- ==========================================
+            PANTALLA DE RESULTADOS: RESULTADOS (Oculta al inicio)
+            ========================================== -->
+        <div id="pantalla-resultados" style="display: none; flex-direction: column; height: 100%; justify-content: space-between;">
+            <div class="encabezado">
+                <h1>¡EXAMEN FINALIZADO!</h1>
+                <p id="subtituloResultados">Resumen de tu rendimiento</p>
+            </div>
+
+            <div class="tarjeta-resultados">
+                <p style="font-size: 18px; color: #dce8ff;">Tu puntaje total es:</p>
+                <h2 id="resultadoPuntaje">0.00</h2>
+                <p style="font-size: 14px; opacity: 0.9; margin-top: 10px; color: #dce8ff;" id="detallesPuntaje">
+                    Correctas: <span id="numCorrectas" style="color: #96ff96; font-weight: bold;">0</span> | 
+                    Incorrectas: <span id="numIncorrectas" style="color: #ff9696; font-weight: bold;">0</span> | 
+                    En Blanco: <span id="numBlancas" style="color: #ffcc66; font-weight: bold;">0</span>
+                </p>
+            </div>
+
+            <button class="btn-menu" onclick="regresarAlMenu()" style="width: 100%; padding: 20px; border: none; border-radius: 15px; background: #00d2ff; color: white; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 20px;">
+                VOLVER AL MENÚ
+            </button>
+        </div>
+
+    </div>
+
+    <!-- CARGA DE DATOS (Variables de los exámenes) -->
+    <!-- Asegúrate de que estos archivos existan en la carpeta json de assets -->
+    <script src="json/2026_I_A.js"></script>
+    <script src="json/2025_II_A.js"></script>
+
+    <!-- MOTOR LÓGICO -->
+    <script src="SimuladorEngine.js"></script>
+
+    <!-- LÓGICA PRINCIPAL -->
+    <script src="script.js"></script>
+</body>
+</html>

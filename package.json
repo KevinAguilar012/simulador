@@ -1,0 +1,16 @@
+{
+  "name": "simulador-unasam",
+  "version": "1.0.0",
+  "description": "Simulador de exámenes de admisión UNASAM con soporte TDD",
+  "main": "script.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitest": "^1.6.0"
+  }
+}

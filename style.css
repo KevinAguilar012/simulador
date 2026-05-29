@@ -17,6 +17,9 @@ body {
     overflow: hidden; /* Evita que la ventana completa genere barras de desplazamiento */
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Background Canvas */
@@ -24,17 +27,15 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    display: block; /* Evita espaciado de elementos en línea o desbordamientos en Chrome */
     z-index: -1;
     pointer-events: none; /* Permite clics a través de él */
 }
 
 .contenedor {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: calc(100% - 20px);
     max-width: 700px; /* Ancho máximo en monitores grandes */
     height: 94vh;     /* Forzamos a que el contenedor use máximo el 94% del alto de la pantalla */
@@ -46,6 +47,7 @@ body {
     border: 1px solid rgba(0, 210, 255, 0.15); /* Borde cian sutil de tecnología */
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 
                 inset 0 0 20px rgba(0, 210, 255, 0.05); /* Brillo interno de hardware futurista */
+    z-index: 1; /* Asegura estar sobre el canvas animado */
     
     /* FLEXBOX INTERNO: Distribuye los bloques verticalmente */
     display: flex;
